@@ -14,7 +14,7 @@ def solve_part1(input_arr: list) -> int:
         elif move == "down":
             depth += distance
         else:
-            stderr.write("error listening to command")
+            stderr.write("[!] Error listening to command")
             exit(0)
     return depth*horizontal
 
@@ -34,7 +34,7 @@ def solve_part2(input_arr: list) -> int:
         elif move == "down":
             aim += distance
         else:
-            stderr.write("error listening to command")
+            stderr.write("[!] Error listening to command")
             exit(0)
 
 

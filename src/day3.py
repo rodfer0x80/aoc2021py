@@ -42,10 +42,9 @@ def solve_part1(input_arr: list) -> int:
         else:
             gamma += "0"
             epsilon += "1"
-    gamma_bin = gamma
     gamma = int(gamma, 2)
     epsilon = int(epsilon, 2)
-    return gamma*epsilon, gamma_bin
+    return gamma*epsilon
 
 
 def solve_part2(input_arr: list) -> int:
@@ -122,7 +121,7 @@ def find_entry(running, size_e, find_larger):
 
 def solve_day3(input_arr: list) -> list:
     output = []
-    part1, _ = solve_part1(input_arr)
+    part1 = solve_part1(input_arr)
     output.append(part1)
     part2 = solve_part2(input_arr)
     output.append(part2)
