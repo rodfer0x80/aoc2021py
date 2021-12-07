@@ -1,3 +1,5 @@
+from functools import lru_cache
+
 
 def get_simple_pos(input_arr: list) -> list:
     pos = []
@@ -12,8 +14,16 @@ def get_simple_pos(input_arr: list) -> list:
             pushed = False
     return pos
 
-def move(x: int,y: int) -> int:
+def move1(x: int, y: int) -> int:
     return abs(x-y)
+
+@lru_cache(maxsize=1024)
+def move2(x: int, y: int) -> int:
+    cost = 0
+    c = abs(x-y)
+    for i in range(1, c+1):
+        cost += i
+    return cost
 
 def find_min_pos(arr: list) -> int:
     min_v = arr[0][0]
@@ -29,7 +39,11 @@ def find_max_pos(arr: list) -> int:
             max_v < i[0]
     return max_v
 
-def calculate_moves(pos: list) -> int:
+def calculate_moves(pos: list, part: int) -> int:
+    if part == 1:
+        move = move1
+    if part == 2:
+        move = move2
     min_pos = find_min_pos(pos)
     max_pos = find_max_pos(pos)
     cost = 0
@@ -44,12 +58,14 @@ def calculate_moves(pos: list) -> int:
 
 def solve_part1(input_arr: list) -> int:
     pos = get_simple_pos(input_arr)
-    fuel = calculate_moves(pos)
+    fuel = calculate_moves(pos, 1)
     return fuel
     
 
 def solve_part2(input_arr: list) -> int:
-    return 0
+    pos = get_simple_pos(input_arr)
+    fuel = calculate_moves(pos, 2)
+    return fuel
 
 
 def solve_day7(input_arr: list) -> list:

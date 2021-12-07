@@ -1,11 +1,14 @@
-# import
-
+def solve_part1(input_arr: list) -> int:
+    return 0
+    
+def solve_part2(input_arr: list) -> int:
+    return 0
 
 def solve_day0(input_arr: list) -> list:
     output = []
-
-    output.append(input_arr[0])
-    output.append(input_arr[0])
-
+    part1 = solve_part1(input_arr)
+    output.append(part1)
+    part2 = solve_part2(input_arr)
+    output.append(part2)
     return output
 
