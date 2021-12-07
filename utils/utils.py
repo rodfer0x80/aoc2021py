@@ -24,12 +24,29 @@ class Utils:
         elif fd == 0:
             formatted_txt = f"{self.input_dir}/{self.input_format[0]}{self.day}{self.input_format[1]}"
         else:
-            sys.stderr.write("[!] Error formatting text, incorrect fd given")
-            formatted_txt = str(day)
+            stderr.write("[!] Error formatting text, incorrect fd given")
+            formatted_txt = str(self.day)
         return formatted_txt
 
 
     def read_file(self, file, fmt) -> list:
+        if fmt == "csv/int":
+            data = []
+            with open(file) as fp:
+                ctx = fp.read()
+            for num in ctx.split(","):
+                    data.append(num)
+            data_size = len(data)
+            last_el = data_size-1
+            if data[last_el][len(data[last_el])-1:] == "\n":
+                el = data[last_el][:len(data[last_el])-1]
+                data.pop(last_el)
+                data.append(el)
+            i = 0
+            for el in data:
+                data[i] = int(el)
+                i += 1
+            return data
         if fmt == "int":
             with open(file) as fp:
                 return [int(line) for line in fp]
