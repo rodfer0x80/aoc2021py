@@ -8,6 +8,7 @@ from src.day1 import solve_day1
 from src.day2 import solve_day2
 from src.day3 import solve_day3
 from src.day4 import solve_day4
+from src.day5 import solve_day5
 from src.day6 import solve_day6
 from src.day7 import solve_day7
 
@@ -35,6 +36,9 @@ if __name__ == '__main__':
         utils.read_input("str")
         output = solve_day3(utils.input_arr)
     elif day == 4:
+        utils.read_input("str")
+        output = solve_day4(utils.input_arr)
+    elif day == 5:
         utils.read_input("str")
         output = solve_day4(utils.input_arr)
     elif day == 6:
