@@ -31,22 +31,9 @@ class Utils:
 
     def read_file(self, file, fmt) -> list:
         if fmt == "csv/int":
-            data = []
             with open(file) as fp:
-                ctx = fp.read()
-            for num in ctx.split(","):
-                    data.append(num)
-            data_size = len(data)
-            last_el = data_size-1
-            if data[last_el][len(data[last_el])-1:] == "\n":
-                el = data[last_el][:len(data[last_el])-1]
-                data.pop(last_el)
-                data.append(el)
-            i = 0
-            for el in data:
-                data[i] = int(el)
-                i += 1
-            return data
+                data = fp.read()
+            return list(map(int, data[0].split(',')))
         if fmt == "int":
             with open(file) as fp:
                 return [int(line) for line in fp]
