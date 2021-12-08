@@ -129,3 +129,54 @@ def multisolve(occurrences, input_arr):
             new_fishpool.append(fish)
         fishpool = new_fishpool + newborn_fishpool
     return len(fishpool)
+
+
+def find_max_x(vents: list) -> int:
+    max_x = 0
+
+    for vent in vents:
+        if vent[0][0] > max_x:
+            max_x = vent[0][0]
+
+        if vent[1][0] > max_x:
+            max_x = vent[1][0] 
+
+    return max_x
+
+def find_max_y(vents: list) -> int:
+    max_y = 0
+
+    for vent in vents:
+        if vent[0][1] > max_y:
+            max_y = vent[0][1]
+
+        if vent[1][1] > max_y:
+            max_y = vent[1][1] 
+
+    return max_y
+
+
+def draw_vents(vents: list) -> list:
+    board = {}
+    c = 0
+
+    for vent in vents:
+        for i in range(vent[0][0], vent[1][0]+1):
+            for j in range(vent[0][1], vent[1][1]-1):
+                if [i,j] not in board:
+                    board[c] = [i, j]
+                    c += 1
+    return board, c
+
+
+def get_dangerous_spots(board: list, size_board: int) -> int:
+    dangerous_spots = list()
+    for i in range(size_board):
+        for j in range(i+1, size_board):
+            if board[i][0] == board[j][0] and board[i][1] == board[j][1]:
+                dangerous_spots.append(board[i])
+                for spot in dangerous_spots:
+                    if spot[0] == board[i][0] and spot[1] == board[i][1]:
+                        dangerous_spots.remove(spot)
+                
+    return dangerous_spots

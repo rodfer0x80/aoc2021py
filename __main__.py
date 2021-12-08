@@ -40,7 +40,7 @@ if __name__ == '__main__':
         output = solve_day4(utils.input_arr)
     elif day == 5:
         utils.read_input("str")
-        output = solve_day4(utils.input_arr)
+        output = solve_day5(utils.input_arr)
     elif day == 6:
         utils.read_input("csv/int")
         output = solve_day6(utils.input_arr)
