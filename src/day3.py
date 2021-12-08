@@ -1,38 +1,13 @@
-def binary_count(bin):
-    n = 0
-    for i in bin:
-        n += 1
-    return 2**n
-
-
-def digit_count(num):
-    n = 0
-    for i in num:
-        n += 1
-    return n
-
-
-def binary_to_decimal(binary):
-    binary1 = binary
-    decimal, i, n = 0, 0, 0
-    while(binary != 0):
-        dec = binary % 10
-        decimal = decimal + dec * pow(2, i)
-        binary = binary//10
-        i += 1
-    return decimal
-
-
-def solve_part1(input_arr: list) -> int:
+def solve_part1(input_ls: list) -> int:
     gamma = ""
     epsilon = ""
-    size_arr = len(input_arr)
-    size_bin = len(input_arr[0])
+    size_arr = len(input_ls)
+    size_bin = len(input_ls[0])
     counters = []
     for i in range(size_bin):
         counters.append(0)
 
-    for bin_str in input_arr:
+    for bin_str in input_ls:
         for i in range(size_bin):
             counters[i] += int(bin_str[i])
     for i in range(size_bin):
@@ -47,17 +22,17 @@ def solve_part1(input_arr: list) -> int:
     return gamma*epsilon
 
 
-def solve_part2(input_arr: list) -> int:
+def solve_part2(input_ls: list) -> int:
     oxygen = ""
     carbon = ""
-    oxygen_running = input_arr
-    co2_running = input_arr
+    oxygen_running = input_ls
+    co2_running = input_ls
     total0 = list()
     total1 = list()
     size_e = 0
-    for line in input_arr:
+    for line in input_ls:
         size_e = len(line)
-    size_e = len(input_arr[0])
+    size_e = len(input_ls[0])
     for i in range(size_e):
         if len(total1) < i + 1:
             total1.append(0)
@@ -119,10 +94,10 @@ def find_entry(running, size_e, find_larger):
             return running[0]
 
 
-def solve_day3(input_arr: list) -> list:
-    output = []
-    part1 = solve_part1(input_arr)
+def solve_day3(input_ls: list) -> list:
+    output = list()
+    part1 = solve_part1(input_ls)
     output.append(part1)
-    part2 = solve_part2(input_arr)
+    part2 = solve_part2(input_ls)
     output.append(part2)
     return output

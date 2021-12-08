@@ -11,6 +11,7 @@ from src.day4 import solve_day4
 from src.day5 import solve_day5
 from src.day6 import solve_day6
 from src.day7 import solve_day7
+from src.day8 import solve_day8
 
 
 if __name__ == '__main__':
@@ -47,6 +48,9 @@ if __name__ == '__main__':
     elif day == 7:
         utils.read_input("csv/int")
         output = solve_day7(utils.input_arr)
+    elif day == 8:
+        utils.read_input("str")
+        output = solve_day8(utils.input_arr)
     else:
         stderr.write("[!] Unknown error")
 

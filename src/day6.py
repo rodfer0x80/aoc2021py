@@ -14,12 +14,12 @@ def solve_part1(xs: list) -> int:
     return len(xs)
 
 
-def solve_part2(input_arr: list) -> int:
+def solve_part2(input_ls: list) -> int:
     # scientific method :: make an array for each day of the cycle
     # and manage the number of fishes in each day of the cycle for each 9 day
     # thus counting the newborns for each cycle
     days = [0] * 9
-    for fish in input_arr:
+    for fish in input_ls:
         days[fish] += 1
     for i in range(256):
         today = i % len(days) 
@@ -27,10 +27,10 @@ def solve_part2(input_arr: list) -> int:
     return sum(days)
 
 
-def solve_day6(input_arr: list) -> list:
-    output = []
-    part1 = solve_part1(input_arr)
+def solve_day6(input_ls: list) -> list:
+    output = list()
+    part1 = solve_part1(input_ls)
     output.append(part1)
-    part2 = solve_part2(input_arr)
+    part2 = solve_part2(input_ls)
     output.append(part2)
     return output

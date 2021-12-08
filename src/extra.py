@@ -9,6 +9,7 @@ def find_medium_pos(input_arr: list) -> int:
     print(medium_pos_m)
     return medium_pos_p, medium_pos_m
 
+
 def calculate_fuel_usage(input_arr: list, medium_pos_p: int, medium_pos_n: int) -> int:
     fuel1 = 0
     fuel2 = 0
@@ -25,8 +26,6 @@ def calculate_fuel_usage(input_arr: list, medium_pos_p: int, medium_pos_n: int) 
 
 from sys import stderr, exit, stdout
 from functools import lru_cache
-
-
 @lru_cache(maxsize=32768)
 class Cycle:
     def __init__(self, order: str, cycle_zero: int, cycle_peak: int, ptr: int):
@@ -143,6 +142,7 @@ def find_max_x(vents: list) -> int:
 
     return max_x
 
+
 def find_max_y(vents: list) -> int:
     max_y = 0
 
@@ -180,3 +180,14 @@ def get_dangerous_spots(board: list, size_board: int) -> int:
                         dangerous_spots.remove(spot)
                 
     return dangerous_spots
+
+
+def binary_to_decimal(binary):
+    binary1 = binary
+    decimal, i, n = 0, 0, 0
+    while(binary != 0):
+        dec = binary % 10
+        decimal = decimal + dec * pow(2, i)
+        binary = binary//10
+        i += 1
+    return decimal

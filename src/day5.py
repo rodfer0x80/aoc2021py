@@ -1,6 +1,6 @@
-def format_vents(input_arr: list) -> list:
+def format_vents(input_ls: list) -> list:
     vents = list()
-    for vent in input_arr:
+    for vent in input_ls:
         vent_s, vent_e = vent.split(" -> ")
 
         vent_sx, vent_sy = vent_s.split(",")
@@ -23,25 +23,25 @@ def filter_diagonals(vents: list) -> list:
 
 
 
-def solve_part1(input_arr: list) -> int:
-    vents = format_vents(input_arr)
+def solve_part1(input_ls: list) -> int:
+    vents = format_vents(input_ls)
     filtered_vents = filter_diagonals(vents)
     return 0
 
     
-def solve_part2(input_arr: list) -> int:
-    vents = format_vents(input_arr)
+def solve_part2(input_ls: list) -> int:
+    vents = format_vents(input_ls)
     filtered_vents = filter_diagonals(vents)
     return 0
 
 
-def solve_day5(input_arr: list) -> list:
-    output = []
+def solve_day5(input_ls: list) -> list:
+    output = list()
 
-    part1 = solve_part1(input_arr)
+    part1 = solve_part1(input_ls)
     output.append(part1)
 
-    part2 = solve_part2(input_arr)
+    part2 = solve_part2(input_ls)
     output.append(part2)
 
     return output

@@ -1,10 +1,7 @@
-from sys import stderr, exit
-
-
-def solve_part1(input_arr: list) -> int:
+def solve_part1(input_ls: list) -> int:
     depth = 0
     horizontal = 0
-    for action in input_arr:
+    for action in input_ls:
         move, distance = action.split(" ")
         distance = int(distance)
         if move == "forward":
@@ -13,17 +10,14 @@ def solve_part1(input_arr: list) -> int:
             depth -= distance
         elif move == "down":
             depth += distance
-        else:
-            stderr.write("[!] Error listening to command")
-            exit(0)
     return depth*horizontal
 
 
-def solve_part2(input_arr: list) -> int:
+def solve_part2(input_ls: list) -> int:
     depth = 0
     horizontal = 0
     aim = 0
-    for action in input_arr:
+    for action in input_ls:
         move, distance = action.split(" ")
         distance = int(distance)
         if move == "forward":
@@ -33,19 +27,14 @@ def solve_part2(input_arr: list) -> int:
             aim -= distance
         elif move == "down":
             aim += distance
-        else:
-            stderr.write("[!] Error listening to command")
-            exit(0)
-
-
     return depth*horizontal
 
 
 
-def solve_day2(input_arr: list) -> list:
-    output = []
-    part1 = solve_part1(input_arr)
+def solve_day2(input_ls: list) -> list:
+    output = list()
+    part1 = solve_part1(input_ls)
     output.append(part1)
-    part2 = solve_part2(input_arr)
+    part2 = solve_part2(input_ls)
     output.append(part2)
     return output
