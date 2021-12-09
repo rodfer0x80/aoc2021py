@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 from sys import argv, stderr, exit
+from os import system
+from os.path import isdir
 
-
-def new_day(type: str) -> int:
+def new_day(type: str, day: str) -> int:
     with open("__main__.py", 'r') as fp:
         main = fp.read().split('\n')
     new_main = ""
@@ -25,10 +26,17 @@ def new_day(type: str) -> int:
         fp.write(new_main)
 
     with open("src/day0.py", 'r') as fp:
-        day_code = fp.read()
+        day_code = fp.read().split('\n')
+    new_day_code = ""
+    for line in day_code:
+        if line.strip() == "def solve_day0(input_ls: list) -> list:":
+            line = f"def solve_day{day}(input_ls: list) -> list:"
+        new_day_code += f"{line}\n"
     with open(f"src/day{day}.py", 'w') as fp:
-        fp.write(day_code)
+        fp.write(new_day_code)
 
+    if isdir("inputs"):
+        system(f"touch inputs/day{day}-input.txt")
     return 0
 
 
@@ -53,7 +61,7 @@ if __name__ == '__main__':
         stderr.write(f"Usage: {argv[0]} <input_type>\ninput_types: csv/int, csv/str, int, str\n")
         exit(0)
 
-    if new_day(argv[1]) != 0:
+    if new_day(argv[1], day) != 0:
         stderr.write(f"Fatal error initialising new day {day}\n")
         exit(0)
 
@@ -63,4 +71,6 @@ if __name__ == '__main__':
     else:
         stderr.write(f"Fatal error during script code rewriting\n")
         exit(0)
+
+
 
