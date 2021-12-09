@@ -21,9 +21,8 @@ def solve_part1(input_ls: list) -> int:
 
     for num in bingo:
         for board in boards:
-            for win_cases in board:
-                if win_cases == num:
-                    print(win_cases)
+            continue
+        
     return score
     
 
