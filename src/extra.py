@@ -191,3 +191,15 @@ def binary_to_decimal(binary):
         binary = binary//10
         i += 1
     return decimal
+
+
+def filter_diagonals(vents: list) -> list:
+    filtered_vents = list()
+    for vent in vents:
+        x0 = vent[0][0]
+        y0 = vent[0][1]
+        x1 = vent[1][0]
+        y1 = vent[1][1]
+        if x0 == x1 or y0 == y1:
+            filtered_vents.append(vent)
+    return filtered_vents
