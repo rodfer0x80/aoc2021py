@@ -10,7 +10,6 @@ def solve_part1(input_ls: list) -> int:
         if line != "":
             new_board.append(line)
         else:
-            print(new_board)
             boards1.append(new_board)
             new_board = list()
 
