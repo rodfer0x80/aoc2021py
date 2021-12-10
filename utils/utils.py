@@ -48,7 +48,7 @@ class Utils:
         if not exists(file):
             stderr.write(f"[!] Error finding input file {file}\n")
             exit(0)
-        self.input_arr = self.read_file(file, fmt)
+        self.input_ls = self.read_file(file, fmt)
 
 
     def write_output(self, output):
