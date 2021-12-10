@@ -19,20 +19,33 @@ def scan_illegal_chars(input_ls: list) -> list:
 def solve_part1(input_ls: list) -> int:
     illegal_chars = scan_illegal_chars(input_ls)
     illegal_points = {
-    ')': 3,
-    ']': 57,
-    '}': 1197,
-    '>': 25137,
+        ')': 3,
+        ']': 57,
+        '}': 1197,
+        '>': 25137,
     }
     score = sum([illegal_points[char] for char in illegal_chars])
     return score
     
-def scan_uncorrupted_lines(input_ls: list) -> list:
-    illegal_chars = list()
-    uncorrupted_lines = input_ls
-    i = 0
+
+def autocomplete_uncorrupted_lines(input_ls: list) -> int:
+    points = {
+        ')': 1,
+        ']': 2,
+        '}': 3,
+        '>': 4,
+    }
+    bracket_mapping = {
+        '(': ')',
+        '[': ']',
+        '{': '}',
+        '<': '>'
+    }
+    total_scores = list()
+
     for line in input_ls:
-        stack = list()
+        is_corrupt = False
+        stack = []
         for char in line:
             gt = char == '>' and len(stack) > 0 and stack[-1] == '<'
             sq = char == ']' and len(stack) > 0 and stack[-1] == '['
@@ -43,22 +56,23 @@ def scan_uncorrupted_lines(input_ls: list) -> list:
             elif char in ['(', '[', '{', '<']:
                 stack.append(char)
             else:
-                illegal_chars.append(char)
-                uncorrupted_lines.pop(i)
+                is_corrupt = True
                 break
-        i += 1
-    return uncorrupted_lines
+        if is_corrupt:
+            continue
+        score = 0
+        stack.reverse()
+        for char in stack:
+            score = score * 5 + points[bracket_mapping[char]]
+        total_scores.append(score)
 
-def autocomplete(lines: list) -> int:
-    score = 0
-    for line in lines:
-        for sym in line:
-            score += 1 
-    return score
+    total_scores.sort()
+    return total_scores[len(total_scores) // 2]
+
 
 def solve_part2(input_ls: list) -> int:
-    uncorrupted_lines = scan_uncorrupted_lines(input_ls)
-    score = autocomplete(uncorrupted_lines)
+    score = autocomplete_uncorrupted_lines(input_ls)
+    
     return score
 
 
