@@ -55,7 +55,7 @@ def reborn(day: str) -> int:
 
 
 if __name__ == '__main__':
-    day = 10
+    day = 11
 
     if len(argv) != 2:
         stderr.write(f"Usage: {argv[0]} <input_type>\ninput_types: csv/int, csv/str, int, str\n")
@@ -71,6 +71,7 @@ if __name__ == '__main__':
     else:
         stderr.write(f"Fatal error during script code rewriting\n")
         exit(0)
+
 
 
 

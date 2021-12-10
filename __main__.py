@@ -13,6 +13,7 @@ from src.day6 import solve_day6
 from src.day7 import solve_day7
 from src.day8 import solve_day8
 from src.day9 import solve_day9
+from src.day10 import solve_day10
 
 
 if __name__ == '__main__':
@@ -55,11 +56,15 @@ if __name__ == '__main__':
     elif day == 9:
         utils.read_input("str")
         output = solve_day9(utils.input_arr)
+    elif day == 10:
+        utils.read_input("str")
+        output = solve_day10(utils.input_arr)
     else:
         stderr.write("[!] Unknown error")
 
     utils.write_output(output)
     exit(0)
+
 
 
 
