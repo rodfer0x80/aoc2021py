@@ -21,8 +21,9 @@ def solve_part1(input_ls: list) -> int:
 
     for num in bingo:
         for board in boards:
-            continue
-        
+            for n in board:
+                print(n)
+
     return score
     
 
