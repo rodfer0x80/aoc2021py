@@ -36,10 +36,10 @@ class Utils:
             return list(map(int, data[0].split(',')))
         if fmt == "int":
             with open(file) as fp:
-                return [int(line) for line in fp]
+                return list(int(line) for line in fp)
         if fmt == "str":
             with open(file) as fp:
-                return [str(line).split("\n")[0] for line in fp]
+                return list(str(line).split("\n")[0] for line in fp)
 
     def read_input(self, fmt):
         file = self.format_path(0)
