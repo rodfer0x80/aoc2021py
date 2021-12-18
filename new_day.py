@@ -13,7 +13,7 @@ def new_day(type: str, day: str) -> int:
         if line.strip() == f"from src.day{day-1} import solve_day{day-1}":
             line = f"from src.day{day-1} import solve_day{day-1}\nfrom src.day{day} import solve_day{day}"
         if line.strip() == f"elif day == {day-1}:":
-            new_entry = f'    elif day == {day}:\n        utils.read_input("str")\n        output = solve_day{day}(utils.input_arr)'
+            new_entry = f'    elif day == {day}:\n        utils.read_input("str")\n        output = solve_day{day}(utils.input_ls)'
             line = f"{line}\n{main[i+1]}\n{main[i+2]}\n{new_entry}"
             banish = 3
             new_main += f"{line}\n"

@@ -65,16 +65,16 @@ if __name__ == '__main__':
         output = solve_day10(utils.input_ls)
     elif day == 11:
         utils.read_input("str")
-        output = solve_day11(utils.input_arr)
+        output = solve_day11(utils.input_ls)
     elif day == 12:
         utils.read_input("str")
-        output = solve_day12(utils.input_arr)
+        output = solve_day12(utils.input_ls)
     elif day == 13:
         utils.read_input("str")
-        output = solve_day13(utils.input_arr)
+        output = solve_day13(utils.input_ls)
     elif day == 14:
         utils.read_input("str")
-        output = solve_day14(utils.input_arr)
+        output = solve_day14(utils.input_ls)
     else:
         stderr.write("[!] Unknown error")
 
